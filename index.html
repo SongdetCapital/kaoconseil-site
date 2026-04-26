@@ -275,30 +275,9 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--dark);
   <div class="section">
     <div class="sec-tag">Prise de rendez-vous</div>
     <h2 class="sec-title">Choisir un créneau</h2>
-    <p class="sec-sub">Session découverte gratuite de 30 à 45 minutes. Aucun engagement.</p>
-    <div class="agenda-layout">
-      <div>
-        <div class="calendar-block">
-          <div class="cal-header">
-            <span id="cal-month-label">Mai 2026</span>
-            <div class="cal-nav">
-              <button onclick="prevMonth()">&#8249;</button>
-              <button onclick="nextMonth()">&#8250;</button>
-            </div>
-          </div>
-          <div class="cal-days" id="cal-grid"></div>
-          <div class="slot-legend">
-            <div class="dot"></div><span>Créneaux disponibles</span>
-          </div>
-        </div>
-        <div class="slots-wrap" id="slots-section" style="display:none;margin-top:20px">
-          <div class="time-slots-header" id="slots-title"></div>
-          <div class="slots-grid" id="slots-grid"></div>
-        </div>
-      </div>
-      <div id="booking-area">
-        <div style="padding:32px 0;color:var(--muted);font-size:14px">Sélectionne un jour disponible pour voir les créneaux horaires.</div>
-      </div>
+    <p class="sec-sub">Session découverte gratuite de 30 à 45 minutes. Aucun engagement. Un lien Google Meet vous sera envoyé automatiquement après confirmation.</p>
+    <div style="margin-top:48px;background:var(--white);border:1px solid var(--border);padding:8px;min-height:700px">
+      <div class="calendly-inline-widget" data-url="https://calendly.com/vicoships36/30min?hide_landing_page_details=1&hide_gdpr_banner=1&primary_color=C8A96E" style="min-width:320px;height:700px;"></div>
     </div>
   </div>
 </div>
@@ -396,55 +375,7 @@ function showPage(id){
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
-var SLOTS={
-  1:['9h00','10h30','14h00','15h30'],
-  3:['9h00','11h00','14h00','17h00'],
-  5:['10h00','14h00'],
-  6:['9h00','11h00'],
-  8:['9h00','10h30','14h00'],
-  10:['9h00','14h00','17h00'],
-  12:['10h00','11h30','14h00'],
-  14:['9h00','14h00'],
-  15:['10h00','14h00'],
-  17:['9h00','10h30','14h00','17h00'],
-  19:['9h00','14h00'],
-  20:['10h00','11h30'],
-  22:['9h00','14h00','17h00'],
-  24:['10h00','14h00'],
-  26:['9h00','10h30','14h00'],
-  27:['10h00','14h00'],
-  29:['9h00','14h00','17h00']
-};
 
-var viewYear=2026,viewMonth=4,selectedDay=null;
-var MONTHS=['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'];
-var DAYS=['Lun','Mar','Mer','Jeu','Ven','Sam','Dim'];
-
-function renderCal(){
-  document.getElementById('cal-month-label').textContent=MONTHS[viewMonth]+' '+viewYear;
-  var grid=document.getElementById('cal-grid');
-  grid.innerHTML='';
-  DAYS.forEach(function(d){var el=document.createElement('div');el.className='cal-day-name';el.textContent=d;grid.appendChild(el);});
-  var first=new Date(viewYear,viewMonth,1);
-  var startDow=(first.getDay()+6)%7;
-  for(var i=0;i<startDow;i++){var el=document.createElement('div');el.className='cal-day other-month';grid.appendChild(el);}
-  var daysInMonth=new Date(viewYear,viewMonth+1,0).getDate();
-  var today=new Date();
-  for(var d=1;d<=daysInMonth;d++){
-    var el=document.createElement('div');
-    el.textContent=d;
-    var cls='cal-day';
-    if(SLOTS[d])cls+=' has-slot';
-    if(d===today.getDate()&&viewMonth===today.getMonth()&&viewYear===today.getFullYear())cls+=' today';
-    if(d===selectedDay)cls+=' selected';
-    el.className=cls;
-    if(SLOTS[d])(function(day){el.onclick=function(){selectDay(day);};})(d);
-    grid.appendChild(el);
-  }
-}
-
-function selectDay(d){
-  selectedDay=d;renderCal();
   var sec=document.getElementById('slots-section');sec.style.display='block';
   document.getElementById('slots-title').textContent='Créneaux — '+d+' '+MONTHS[viewMonth];
   var sg=document.getElementById('slots-grid');sg.innerHTML='';
@@ -488,5 +419,6 @@ function sendContact(e){e.preventDefault();document.getElementById('sent-msg').s
 
 renderCal();
 </script>
+<script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
 </body>
 </html>
