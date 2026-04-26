@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KAO CONSEIL — Accompagnement de porteurs de projets</title>
+<meta name="description" content="KAO CONSEIL — Accompagnement et conseil pour porteurs de projets et créateurs d'entreprise. Sessions individuelles, business plan, financement. Lyon & France entière.">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --gold:#C8A96E;--gold-light:#F0E4C8;--dark:#1A1A16;--mid:#3A3A30;
+  --muted:#8A8A7A;--cream:#F8F5EE;--white:#FFFFFF;--border:rgba(200,169,110,0.22);
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--dark);font-size:15px;line-height:1.7;overflow-x:hidden}
+.site-nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(248,245,238,0.96);border-bottom:1px solid var(--border);padding:0 5%;height:60px;display:flex;align-items:center;justify-content:space-between;backdrop-filter:blur(10px)}
+.nav-logo{font-family:'DM Serif Display',serif;font-size:19px;color:var(--dark);letter-spacing:.08em;text-decoration:none;cursor:pointer}
+.nav-logo span{color:var(--gold)}
+.nav-tabs{display:flex;gap:0;list-style:none;border:1px solid var(--border)}
+.nav-tabs li a{display:block;padding:8px 18px;font-size:12px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-decoration:none;border-right:1px solid var(--border);transition:all .18s;cursor:pointer;background:transparent}
+.nav-tabs li:last-child a{border-right:none}
+.nav-tabs li a:hover{color:var(--dark);background:var(--white)}
+.nav-tabs li a.active{color:var(--dark);background:var(--white)}
+.nav-cta-btn{background:var(--gold);color:var(--white);padding:8px 18px;font-size:12px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;border:none;cursor:pointer;text-decoration:none;white-space:nowrap}
+.nav-cta-btn:hover{opacity:.85}
+.page{display:none;padding-top:60px;min-height:100vh;animation:fadeIn .25s ease}
+.page.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.hero{min-height:calc(100vh - 60px);display:grid;grid-template-columns:1fr 1fr}
+.hero-left{display:flex;flex-direction:column;justify-content:center;padding:80px 6% 80px 8%;position:relative}
+.hero-left::after{content:'';position:absolute;right:0;top:15%;bottom:15%;width:1px;background:var(--border)}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:28px}
+.hero-tag::before{content:'';display:block;width:20px;height:1px;background:var(--gold)}
+.hero-title{font-family:'DM Serif Display',serif;font-size:clamp(38px,4vw,58px);line-height:1.1;color:var(--dark);margin-bottom:20px}
+.hero-title em{font-style:italic;color:var(--gold)}
+.hero-sub{font-size:16px;color:var(--muted);max-width:440px;margin-bottom:40px;line-height:1.8}
+.hero-actions{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.btn-dark{background:var(--dark);color:var(--white);padding:13px 28px;font-size:13px;font-weight:500;border:none;cursor:pointer;text-decoration:none;display:inline-block;transition:background .18s;letter-spacing:.03em}
+.btn-dark:hover{background:var(--mid)}
+.btn-ghost{font-size:13px;color:var(--muted);text-decoration:none;display:flex;align-items:center;gap:6px;transition:color .18s;cursor:pointer;background:none;border:none;font-family:inherit}
+.btn-ghost:hover{color:var(--dark)}
+.hero-right{display:flex;flex-direction:column;justify-content:center;padding:80px 8% 80px 6%;background:var(--white)}
+.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:36px}
+.stat{background:var(--white);padding:24px 20px}
+.stat-num{font-family:'DM Serif Display',serif;font-size:32px;color:var(--dark);display:block;margin-bottom:3px}
+.stat-lbl{font-size:11px;color:var(--muted);letter-spacing:.03em}
+.hero-quote{padding:20px;border-left:2px solid var(--gold);background:var(--cream)}
+.hero-quote p{font-family:'DM Serif Display',serif;font-style:italic;font-size:17px;color:var(--mid);line-height:1.5;margin-bottom:10px}
+.hero-quote span{font-size:11px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+.section{padding:80px 8%}
+.sec-tag{font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.sec-tag::before{content:'';display:block;width:18px;height:1px;background:var(--gold)}
+.sec-title{font-family:'DM Serif Display',serif;font-size:clamp(28px,3vw,42px);line-height:1.15;color:var(--dark);margin-bottom:12px}
+.sec-sub{font-size:15px;color:var(--muted);max-width:500px;line-height:1.8}
+.pack-page{background:var(--white)}
+.pack-card{max-width:720px;border:1px solid var(--border);background:var(--white);overflow:hidden}
+.pack-header{background:var(--dark);padding:36px 40px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.pack-header-left h2{font-family:'DM Serif Display',serif;font-size:28px;color:var(--white);margin-bottom:6px}
+.pack-header-left p{font-size:13px;color:rgba(255,255,255,.5)}
+.pack-price .amount{font-family:'DM Serif Display',serif;font-size:48px;color:var(--gold);line-height:1}
+.pack-price .per{font-size:12px;color:rgba(255,255,255,.4);letter-spacing:.04em;text-transform:uppercase;margin-top:4px}
+.pack-price .compare{font-size:11px;color:rgba(255,255,255,.3);text-decoration:line-through;margin-top:2px}
+.pack-body{padding:40px}
+.pack-sessions{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:40px}
+.session-card{border:1px solid var(--border);padding:20px 14px;text-align:center;background:var(--cream)}
+.session-num{font-family:'DM Serif Display',serif;font-size:28px;color:var(--gold);display:block;margin-bottom:4px}
+.session-lbl{font-size:11px;color:var(--muted);letter-spacing:.05em}
+.session-desc{font-size:12px;color:var(--mid);margin-top:8px;line-height:1.5}
+.pack-includes{margin-bottom:36px}
+.pack-includes h4{font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
+.include-list{list-style:none;display:flex;flex-direction:column;gap:10px}
+.include-list li{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--mid)}
+.include-list li::before{content:'';display:block;width:6px;height:6px;background:var(--gold);border-radius:50%;flex-shrink:0;margin-top:7px}
+.pack-actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.btn-pay{display:inline-flex;align-items:center;gap:8px;padding:14px 24px;font-size:13px;font-weight:500;letter-spacing:.04em;border:none;cursor:pointer;text-decoration:none;transition:opacity .18s}
+.btn-pay-stripe{background:#635BFF;color:#fff}
+.btn-pay-paypal{background:#0070BA;color:#fff}
+.btn-pay:hover{opacity:.85}
+.pay-note{font-size:12px;color:var(--muted);margin-top:12px;font-style:italic}
+.agenda-layout{display:grid;grid-template-columns:1fr 1fr;gap:60px;margin-top:48px;align-items:start}
+.calendar-block{border:1px solid var(--border);background:var(--white)}
+.cal-header{background:var(--dark);padding:16px 20px;display:flex;justify-content:space-between;align-items:center}
+.cal-header span{font-family:'DM Serif Display',serif;font-size:16px;color:var(--white)}
+.cal-nav{display:flex;gap:8px}
+.cal-nav button{background:rgba(255,255,255,.08);border:none;color:rgba(255,255,255,.7);width:28px;height:28px;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;transition:background .15s;font-family:inherit}
+.cal-nav button:hover{background:rgba(255,255,255,.15)}
+.cal-days{display:grid;grid-template-columns:repeat(7,1fr);gap:0}
+.cal-day-name{text-align:center;padding:10px 4px;font-size:10px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--border)}
+.cal-day{text-align:center;padding:10px 4px;font-size:13px;color:var(--muted);border-bottom:1px solid var(--border);border-right:1px solid var(--border);cursor:default;transition:background .12s;min-height:38px;display:flex;align-items:center;justify-content:center}
+.cal-day:nth-child(7n){border-right:none}
+.cal-day.other-month{color:rgba(138,138,122,.3)}
+.cal-day.has-slot{color:var(--dark);cursor:pointer;background:var(--cream)}
+.cal-day.has-slot:hover{background:var(--gold-light)}
+.cal-day.selected{background:var(--gold);color:var(--white)}
+.cal-day.today{font-weight:500;color:var(--gold)}
+.slot-legend{display:flex;align-items:center;gap:8px;padding:10px 12px;font-size:11px;color:var(--muted);border-top:1px solid var(--border)}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--gold-light);border:1px solid var(--border);flex-shrink:0}
+.slots-wrap{margin-top:20px}
+.time-slots-header{font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.slots-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.slot-btn{padding:10px 14px;border:1px solid var(--border);background:var(--white);font-size:13px;color:var(--mid);cursor:pointer;transition:all .15s;text-align:center;font-family:inherit}
+.slot-btn:hover{border-color:var(--gold);color:var(--dark);background:var(--cream)}
+.slot-btn.picked{background:var(--dark);color:var(--white);border-color:var(--dark)}
+.booking-form{display:flex;flex-direction:column;gap:12px;margin-top:8px}
+.bf-label{font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:5px}
+.bf-input{width:100%;padding:10px 14px;border:1px solid var(--border);background:var(--white);font-size:13px;color:var(--dark);font-family:inherit;outline:none;transition:border-color .15s}
+.bf-input:focus{border-color:var(--gold)}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-top:48px}
+.testi-card{background:var(--white);padding:32px 28px}
+.testi-text{font-size:14px;color:var(--mid);line-height:1.8;margin-bottom:20px;font-style:italic}
+.testi-author{font-size:12px;font-weight:500;color:var(--dark);letter-spacing:.04em;text-transform:uppercase}
+.testi-role{font-size:11px;color:var(--muted);margin-top:2px}
+.testi-stars{display:flex;gap:3px;margin-bottom:14px}
+.star{width:12px;height:12px;background:var(--gold)}
+.testi-cta{margin-top:48px;background:var(--dark);padding:48px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px}
+.testi-cta h3{font-family:'DM Serif Display',serif;font-size:24px;color:var(--white)}
+.testi-cta p{font-size:13px;color:rgba(255,255,255,.45);margin-top:6px}
+.contact-page{background:var(--dark)}
+.contact-page .sec-tag{color:var(--gold)}
+.contact-page .sec-tag::before{background:var(--gold)}
+.contact-page .sec-title{color:var(--white)}
+.contact-page .sec-sub{color:rgba(255,255,255,.45)}
+.contact-layout{display:grid;grid-template-columns:1fr 1.2fr;gap:72px;margin-top:52px;align-items:start}
+.contact-info{display:flex;flex-direction:column;gap:28px}
+.ci-item label{font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:4px}
+.ci-item a,.ci-item span{font-size:14px;color:rgba(255,255,255,.7);text-decoration:none}
+.ci-item a:hover{color:var(--white)}
+.cf{display:flex;flex-direction:column;gap:14px}
+.cf-group{display:flex;flex-direction:column;gap:6px}
+.cf-group label{font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35)}
+.cf-group input,.cf-group textarea,.cf-group select{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:var(--white);padding:10px 14px;font-family:inherit;font-size:13px;outline:none;transition:border-color .18s;width:100%}
+.cf-group input::placeholder,.cf-group textarea::placeholder{color:rgba(255,255,255,.2)}
+.cf-group input:focus,.cf-group textarea:focus,.cf-group select:focus{border-color:var(--gold)}
+.cf-group select option{background:#1A1A16}
+.cf-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.btn-gold{background:var(--gold);color:var(--white);padding:13px 28px;font-size:13px;font-weight:500;letter-spacing:.04em;border:none;cursor:pointer;transition:opacity .18s;align-self:flex-start;font-family:inherit}
+.btn-gold:hover{opacity:.85}
+.sent-msg{font-size:12px;color:var(--gold);margin-top:6px;display:none}
+.site-footer{background:#111110;padding:32px 8%;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,.05);flex-wrap:wrap;gap:12px}
+.footer-logo{font-family:'DM Serif Display',serif;font-size:17px;color:rgba(255,255,255,.55);letter-spacing:.08em}
+.footer-logo span{color:var(--gold)}
+.footer-legal{font-size:11px;color:rgba(255,255,255,.22)}
+.footer-lnks{display:flex;gap:16px;list-style:none}
+.footer-lnks a{font-size:11px;color:rgba(255,255,255,.28);text-decoration:none;letter-spacing:.05em;text-transform:uppercase;transition:color .18s;cursor:pointer}
+.footer-lnks a:hover{color:var(--gold)}
+@media(max-width:900px){
+  .nav-tabs{display:none}
+  .hero{grid-template-columns:1fr}
+  .hero-left::after{display:none}
+  .hero-right{padding:40px 8%}
+  .pack-sessions{grid-template-columns:1fr 1fr}
+  .agenda-layout{grid-template-columns:1fr}
+  .testi-grid{grid-template-columns:1fr}
+  .contact-layout{grid-template-columns:1fr;gap:40px}
+  .testi-cta{flex-direction:column}
+  .site-footer{flex-direction:column;text-align:center}
+  .mobile-menu-btn{display:flex}
+}
+.mobile-menu-btn{display:none;background:none;border:1px solid var(--border);padding:6px 12px;font-size:12px;color:var(--mid);cursor:pointer;font-family:inherit}
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a class="nav-logo" onclick="showPage('accueil')">KAO<span>.</span>CONSEIL</a>
+  <ul class="nav-tabs">
+    <li><a id="tab-accueil" class="active" onclick="showPage('accueil')">Accueil</a></li>
+    <li><a id="tab-pack" onclick="showPage('pack')">Pack mensuel</a></li>
+    <li><a id="tab-agenda" onclick="showPage('agenda')">Réserver</a></li>
+    <li><a id="tab-temoignages" onclick="showPage('temoignages')">Témoignages</a></li>
+    <li><a id="tab-contact" onclick="showPage('contact')">Contact</a></li>
+  </ul>
+  <a class="nav-cta-btn" onclick="showPage('agenda')">Session gratuite →</a>
+</nav>
+
+<!-- ACCUEIL -->
+<div id="page-accueil" class="page active">
+  <div class="hero">
+    <div class="hero-left">
+      <div class="hero-tag">Conseil & Accompagnement</div>
+      <h1 class="hero-title">Un petit pas de plus<br>vers la <em>réussite.</em></h1>
+      <p class="hero-sub">Tu as une idée, une intuition, un projet. Je t'aide à le structurer, le valider, le financer — sans jargon, sans condescendance.</p>
+      <div class="hero-actions">
+        <a class="btn-dark" onclick="showPage('pack')">Voir le pack mensuel</a>
+        <button class="btn-ghost" onclick="showPage('agenda')">Session gratuite →</button>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="stat-grid">
+        <div class="stat"><span class="stat-num">3+</span><span class="stat-lbl">Ans d'expérience terrain</span></div>
+        <div class="stat"><span class="stat-num">BNP</span><span class="stat-lbl">Vision banquier & crédit</span></div>
+        <div class="stat"><span class="stat-num">80€</span><span class="stat-lbl">Tarif horaire transparent</span></div>
+        <div class="stat"><span class="stat-num">0€</span><span class="stat-lbl">Session découverte offerte</span></div>
+      </div>
+      <div class="hero-quote">
+        <p>"KAO, c'est avancer en thaï. C'est exactement ce qu'on fait ensemble."</p>
+        <span>Victor L. — Fondateur, KAO CONSEIL</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PACK -->
+<div id="page-pack" class="page">
+  <div class="pack-page">
+    <div class="section" style="padding-bottom:0">
+      <div class="sec-tag">Offre unique</div>
+      <h2 class="sec-title">Le pack mensuel</h2>
+      <p class="sec-sub">Une seule offre, sans option. 4 sessions d'1h sur 1 mois pour transformer ton idée en projet concret et finançable.</p>
+    </div>
+    <div class="section" style="padding-top:40px">
+      <div class="pack-card">
+        <div class="pack-header">
+          <div class="pack-header-left">
+            <h2>Pack Mensuel KAO</h2>
+            <p>4 sessions d'1h — 1 par semaine pendant 1 mois</p>
+          </div>
+          <div class="pack-price">
+            <div class="amount">320€</div>
+            <div class="per">ttc — TVA non applicable</div>
+            <div class="compare">400€ au tarif horaire</div>
+          </div>
+        </div>
+        <div class="pack-body">
+          <div class="pack-sessions">
+            <div class="session-card">
+              <span class="session-num">S1</span>
+              <div class="session-lbl">Semaine 1</div>
+              <div class="session-desc">Diagnostic & cadrage du projet</div>
+            </div>
+            <div class="session-card">
+              <span class="session-num">S2</span>
+              <div class="session-lbl">Semaine 2</div>
+              <div class="session-desc">Validation marché & modèle économique</div>
+            </div>
+            <div class="session-card">
+              <span class="session-num">S3</span>
+              <div class="session-lbl">Semaine 3</div>
+              <div class="session-desc">Structure financière & financement</div>
+            </div>
+            <div class="session-card">
+              <span class="session-num">S4</span>
+              <div class="session-lbl">Semaine 4</div>
+              <div class="session-desc">Plan d'action & prochaines étapes</div>
+            </div>
+          </div>
+          <div class="pack-includes">
+            <h4>Ce qui est inclus</h4>
+            <ul class="include-list">
+              <li>4 sessions visio ou téléphone d'1h chacune, planifiées sur 4 semaines consécutives</li>
+              <li>Compte-rendu écrit après chaque session avec les points clés et actions à mener</li>
+              <li>Accès WhatsApp/email entre les sessions pour les questions urgentes</li>
+              <li>Revue de tout document produit (business plan, prévisionnel, pitch)</li>
+              <li>Économie de 80€ par rapport au tarif horaire individuel</li>
+            </ul>
+          </div>
+          <div class="pack-actions">
+            <a href="https://buy.stripe.com/REMPLACER_ICI" class="btn-pay btn-pay-stripe" target="_blank">
+              Payer par carte (Stripe)
+            </a>
+            <a href="https://paypal.me/REMPLACER_ICI/320" class="btn-pay btn-pay-paypal" target="_blank">
+              Payer par PayPal
+            </a>
+          </div>
+          <p class="pay-note">Les liens de paiement seront activés sous peu — contactez-moi directement pour réserver dès maintenant : contact@kaoconseil.fr</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- AGENDA -->
+<div id="page-agenda" class="page">
+  <div class="section">
+    <div class="sec-tag">Prise de rendez-vous</div>
+    <h2 class="sec-title">Choisir un créneau</h2>
+    <p class="sec-sub">Session découverte gratuite de 30 à 45 minutes. Aucun engagement.</p>
+    <div class="agenda-layout">
+      <div>
+        <div class="calendar-block">
+          <div class="cal-header">
+            <span id="cal-month-label">Mai 2026</span>
+            <div class="cal-nav">
+              <button onclick="prevMonth()">&#8249;</button>
+              <button onclick="nextMonth()">&#8250;</button>
+            </div>
+          </div>
+          <div class="cal-days" id="cal-grid"></div>
+          <div class="slot-legend">
+            <div class="dot"></div><span>Créneaux disponibles</span>
+          </div>
+        </div>
+        <div class="slots-wrap" id="slots-section" style="display:none;margin-top:20px">
+          <div class="time-slots-header" id="slots-title"></div>
+          <div class="slots-grid" id="slots-grid"></div>
+        </div>
+      </div>
+      <div id="booking-area">
+        <div style="padding:32px 0;color:var(--muted);font-size:14px">Sélectionne un jour disponible pour voir les créneaux horaires.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TEMOIGNAGES -->
+<div id="page-temoignages" class="page">
+  <div class="section">
+    <div class="sec-tag">Ils m'ont fait confiance</div>
+    <h2 class="sec-title">Témoignages</h2>
+    <p class="sec-sub">Des sessions gratuites aux premiers projets financés — ce qu'en disent ceux qui ont avancé.</p>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="testi-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+        <p class="testi-text">"En 4 sessions, j'avais un business plan solide et les arguments pour convaincre ma banque. Victor parle vraiment le même langage que les conseillers bancaires — ça change tout."</p>
+        <div class="testi-author">À venir</div>
+        <div class="testi-role">Porteur de projet, commerce alimentaire</div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+        <p class="testi-text">"Je tournais en rond depuis 6 mois. Dès la première session gratuite, j'avais une clarté que je n'avais jamais eue. Méthodique, direct, sans blabla."</p>
+        <div class="testi-author">À venir</div>
+        <div class="testi-role">Créatrice, services aux particuliers</div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+        <p class="testi-text">"Ce qui m'a frappé, c'est la vision banque + conseil. Il sait ce que le prêteur regarde vraiment. Mon dossier a été accepté au premier passage."</p>
+        <div class="testi-author">À venir</div>
+        <div class="testi-role">Entrepreneur, secteur digital</div>
+      </div>
+    </div>
+    <div class="testi-cta">
+      <div>
+        <h3>Tu veux être l'un des premiers témoignages ?</h3>
+        <p>Sessions gratuites disponibles en échange d'un retour honnête sur LinkedIn ou Malt.</p>
+      </div>
+      <button class="btn-dark" onclick="showPage('agenda')" style="white-space:nowrap">Réserver ma session gratuite →</button>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div id="page-contact" class="page">
+  <div class="contact-page section">
+    <div class="sec-tag">Prendre contact</div>
+    <h2 class="sec-title">Parlons de ton projet.</h2>
+    <p class="sec-sub">Réponse sous 24h en semaine. Session découverte offerte sans engagement.</p>
+    <div class="contact-layout">
+      <div class="contact-info">
+        <div class="ci-item"><label>Email</label><a href="mailto:contact@kaoconseil.fr">contact@kaoconseil.fr</a></div>
+        <div class="ci-item"><label>Format</label><span>Visio ou téléphone — France entière</span></div>
+        <div class="ci-item"><label>Disponibilité</label><span>Lun–Sam · 9h–20h</span></div>
+        <div class="ci-item"><label>Profil Malt</label><a href="https://www.malt.fr" target="_blank">malt.fr — KAO CONSEIL</a></div>
+        <div class="ci-item"><label>Délai de réponse</label><span>Sous 24h</span></div>
+      </div>
+      <form class="cf" onsubmit="sendContact(event)">
+        <div class="cf-row">
+          <div class="cf-group"><label>Prénom</label><input type="text" placeholder="Prénom" required></div>
+          <div class="cf-group"><label>Nom</label><input type="text" placeholder="Nom" required></div>
+        </div>
+        <div class="cf-group"><label>Email</label><input type="email" placeholder="ton@email.fr" required></div>
+        <div class="cf-group"><label>Étape de ton projet</label>
+          <select required>
+            <option value="" disabled selected>Choisir</option>
+            <option>J'ai une idée, je veux la valider</option>
+            <option>Je prépare un business plan / dossier banque</option>
+            <option>Je suis en cours de lancement</option>
+            <option>Je cherche un accompagnement sur la durée</option>
+          </select>
+        </div>
+        <div class="cf-group"><label>Message</label><textarea rows="4" placeholder="Décris ton projet et tes questions..."></textarea></div>
+        <button type="submit" class="btn-gold">Envoyer →</button>
+        <p id="sent-msg" class="sent-msg">Message envoyé — je reviens vers toi sous 24h.</p>
+      </form>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-logo">KAO<span>.</span>CONSEIL</div>
+  <p class="footer-legal">© 2026 KAO CONSEIL — Micro-entreprise — Lyon, France — TVA non applicable art.293B CGI</p>
+  <ul class="footer-lnks">
+    <li><a onclick="showPage('contact')">Contact</a></li>
+    <li><a onclick="showPage('pack')">Offre</a></li>
+    <li><a onclick="showPage('agenda')">Réserver</a></li>
+  </ul>
+</footer>
+
+<script>
+function showPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-tabs a').forEach(a=>a.classList.remove('active'));
+  document.getElementById('page-'+id).classList.add('active');
+  var t=document.getElementById('tab-'+id);
+  if(t)t.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+var SLOTS={
+  1:['9h00','10h30','14h00','15h30'],
+  3:['9h00','11h00','14h00','17h00'],
+  5:['10h00','14h00'],
+  6:['9h00','11h00'],
+  8:['9h00','10h30','14h00'],
+  10:['9h00','14h00','17h00'],
+  12:['10h00','11h30','14h00'],
+  14:['9h00','14h00'],
+  15:['10h00','14h00'],
+  17:['9h00','10h30','14h00','17h00'],
+  19:['9h00','14h00'],
+  20:['10h00','11h30'],
+  22:['9h00','14h00','17h00'],
+  24:['10h00','14h00'],
+  26:['9h00','10h30','14h00'],
+  27:['10h00','14h00'],
+  29:['9h00','14h00','17h00']
+};
+
+var viewYear=2026,viewMonth=4,selectedDay=null;
+var MONTHS=['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'];
+var DAYS=['Lun','Mar','Mer','Jeu','Ven','Sam','Dim'];
+
+function renderCal(){
+  document.getElementById('cal-month-label').textContent=MONTHS[viewMonth]+' '+viewYear;
+  var grid=document.getElementById('cal-grid');
+  grid.innerHTML='';
+  DAYS.forEach(function(d){var el=document.createElement('div');el.className='cal-day-name';el.textContent=d;grid.appendChild(el);});
+  var first=new Date(viewYear,viewMonth,1);
+  var startDow=(first.getDay()+6)%7;
+  for(var i=0;i<startDow;i++){var el=document.createElement('div');el.className='cal-day other-month';grid.appendChild(el);}
+  var daysInMonth=new Date(viewYear,viewMonth+1,0).getDate();
+  var today=new Date();
+  for(var d=1;d<=daysInMonth;d++){
+    var el=document.createElement('div');
+    el.textContent=d;
+    var cls='cal-day';
+    if(SLOTS[d])cls+=' has-slot';
+    if(d===today.getDate()&&viewMonth===today.getMonth()&&viewYear===today.getFullYear())cls+=' today';
+    if(d===selectedDay)cls+=' selected';
+    el.className=cls;
+    if(SLOTS[d])(function(day){el.onclick=function(){selectDay(day);};})(d);
+    grid.appendChild(el);
+  }
+}
+
+function selectDay(d){
+  selectedDay=d;renderCal();
+  var sec=document.getElementById('slots-section');sec.style.display='block';
+  document.getElementById('slots-title').textContent='Créneaux — '+d+' '+MONTHS[viewMonth];
+  var sg=document.getElementById('slots-grid');sg.innerHTML='';
+  SLOTS[d].forEach(function(s){
+    var btn=document.createElement('button');
+    btn.className='slot-btn';btn.textContent=s;
+    btn.onclick=function(){
+      document.querySelectorAll('.slot-btn').forEach(function(b){b.classList.remove('picked');});
+      btn.classList.add('picked');
+      showBookingForm(d,s);
+    };
+    sg.appendChild(btn);
+  });
+  document.getElementById('booking-area').innerHTML='<div style="padding:32px 0;color:var(--muted);font-size:14px">Choisis un créneau horaire ci-contre.</div>';
+}
+
+function showBookingForm(day,slot){
+  var area=document.getElementById('booking-area');
+  area.innerHTML='<div style="font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:20px">Réservation — '+day+' '+MONTHS[viewMonth]+' '+viewYear+' à '+slot+'</div>'
+  +'<form class="booking-form" onsubmit="confirmBooking(event,\''+day+' '+MONTHS[viewMonth]+'\',\''+slot+'\')">'
+  +'<div><label class="bf-label">Prénom & Nom</label><input class="bf-input" type="text" placeholder="Marie Dupont" required></div>'
+  +'<div><label class="bf-label">Email</label><input class="bf-input" type="email" placeholder="marie@email.fr" required></div>'
+  +'<div><label class="bf-label">Téléphone</label><input class="bf-input" type="tel" placeholder="06 XX XX XX XX"></div>'
+  +'<div><label class="bf-label">Ton projet</label><select class="bf-input"><option value="" disabled selected>Choisir</option><option>Valider une idée</option><option>Préparer un business plan</option><option>Préparer un dossier banque</option><option>Accompagnement lancement</option></select></div>'
+  +'<div style="display:flex;align-items:center;gap:10px;margin-top:4px"><button type="submit" class="btn-dark" style="padding:12px 24px;font-size:13px">Confirmer →</button><span style="font-size:11px;color:var(--muted)">Gratuit, sans engagement</span></div>'
+  +'</form>';
+}
+
+function confirmBooking(e,day,slot){
+  e.preventDefault();
+  document.getElementById('booking-area').innerHTML='<div style="background:var(--dark);padding:28px 32px;">'
+  +'<div style="font-size:13px;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px">Rendez-vous confirmé</div>'
+  +'<div style="font-family:\'DM Serif Display\',serif;font-size:22px;color:var(--white);margin-bottom:6px">'+day+' à '+slot+'</div>'
+  +'<div style="font-size:13px;color:rgba(255,255,255,.5)">Un email de confirmation sera envoyé. À très bientôt.</div>'
+  +'<div style="margin-top:20px;font-size:12px;color:var(--gold)">contact@kaoconseil.fr</div></div>';
+}
+
+function prevMonth(){if(viewMonth===0){viewMonth=11;viewYear--;}else{viewMonth--;}selectedDay=null;renderCal();}
+function nextMonth(){if(viewMonth===11){viewMonth=0;viewYear++;}else{viewMonth++;}selectedDay=null;renderCal();}
+function sendContact(e){e.preventDefault();document.getElementById('sent-msg').style.display='block';e.target.reset();setTimeout(function(){document.getElementById('sent-msg').style.display='none';},5000);}
+
+renderCal();
+</script>
+</body>
+</html>
